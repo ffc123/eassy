@@ -90,11 +90,11 @@ public class UserController {
     }
 
     @PatchMapping("/updatePwd")
-    public Result updatePwd(@RequestBody Map<String, String> params,@RequestHeader("Authorization") String token){
+    public Result updatePwd(@RequestBody Map<String, Object> params,@RequestHeader("Authorization") String token){
         // 1. 获取参数
-        String oldPwd = params.get("old_pwd");
-        String newPwd = params.get("new_pwd");
-        String rePwd = params.get("re_pwd");
+        String oldPwd = (String) params.get("old_pwd");
+        String newPwd = (String) params.get("new_pwd");
+        String rePwd = (String) params.get("re_pwd");
 
         // 2. 校验参数
         if (!StringUtils.hasLength(oldPwd)
